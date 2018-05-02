@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Dragons</title>
+	<style>
+h1 { text-align: center; }
+
+#result { text-align: center; }
+
+#controls label {
+	display: flex;
+	flex-direction: row;
+}
+
+[type=range] {
+	flex-grow: 1;
+}
+	</style>
+</head>
+<body>
+	<h1>Dragons</h1>
+	<p></p>
+	<section id="controls">
+		<label>
+			Redraw automatically <input id="autorender" type="checkbox" checked />
+		</label>
+		<button id="render">Redraw manually</button>
+		<label>
+			Width: <input id="width" type="range" min="200" max="8000" /><span></span>px
+		</label>
+		<label>
+			Generations: <input id="generations" type="range" min="1" max="20" /><span></span>
+		</label>
+		<label>
+			Initial line width: <input id="thickness" type="range" min="10" max="100" /><span></span>px
+		</label>
+		<label>
+			Line width decay: <input id="thicknessdecay" type="range" min="10" max="90" /><span></span>%
+		</label>
+		<label>
+			Shadow color: <input id="shadowcolor" type="color" />
+		</label>
+		<label>
+			Shadow width: <input id="shadowblur" type="range" min="0" max="100" /><span></span>%
+		</label>
+	</section>
+	<section id="result"></section>
+
+	<script type="module" src="app.js"></script>
+</body>
