@@ -4,11 +4,10 @@ import * as style from "./style.js";
 export const defaultOptions = {
 	generations: 15,
 	width: 800,
-	thickness: 15,
+	thickness: 0.02,
 	thicknessDecay: 0.75,
-	shadowColor: "#ffffff",
-	shadowBlur: 0.75,
-	coloring: "hue"
+	coloring: "reds",
+	shadowBlur: 0.75
 }
 
 let lastCP, ctx;

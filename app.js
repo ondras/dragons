@@ -2,54 +2,38 @@ import * as dragon from "./dragon.js";
 
 const DOM = {
 	result: document.querySelector("#result"),
-	width: document.querySelector("#width"),
-	autoRender: document.querySelector("#autorender"),
-	render: document.querySelector("#render"),
-	generations: document.querySelector("#generations"),
-	thickness: document.querySelector("#thickness"),
-	thicknessDecay: document.querySelector("#thicknessdecay"),
-	shadowColor: document.querySelector("#shadowcolor"),
-	shadowBlur: document.querySelector("#shadowblur"),
+	width: document.querySelector("[name=width]"),
+	generations: document.querySelector("[name=generations]"),
+	coloring: document.querySelector("[name=coloring]"),
+	thickness: document.querySelector("[name=thickness]")
 }
 
 function render() {
 	let options = {
-		width: DOM.width.valueAsNumber,
-		generations: DOM.generations.valueAsNumber,
-		thickness: DOM.thickness.valueAsNumber,
-		thicknessDecay: DOM.thicknessDecay.valueAsNumber / 100,
-		shadowColor: DOM.shadowColor.value,
-		shadowBlur: DOM.shadowBlur.valueAsNumber / 100
+		width: Number(DOM.width.value),
+		generations: Number(DOM.generations.value),
+		coloring: DOM.coloring.value,
+		thickness: Number(DOM.thickness.value)
 	}
-	DOM.result.innerHTML = "";
-	let c = dragon.render(options);
-	DOM.result.appendChild(c);
-}
 
-function onChange(e) {
-	if (!DOM.autoRender.checked) { return; }
-	render();
+	let old = DOM.result.querySelector("canvas");
+	if (old) { old.width = old.width; }
+
+	setTimeout(() => {	
+		let c = dragon.render(options);
+		DOM.result.innerHTML = "";
+		DOM.result.appendChild(c);
+	}, 20);
 }
 
 function initControls() {
 	let o = dragon.defaultOptions;
 	DOM.width.value = o.width;
 	DOM.generations.value = o.generations;
+	DOM.coloring.value = o.coloring;
 	DOM.thickness.value = o.thickness;
-	DOM.thicknessDecay.value = o.thicknessDecay * 100;
-	DOM.shadowColor.value = o.shadowColor;
-	DOM.shadowBlur.value = o.shadowBlur * 100;
 
-	function sync(input) {
-		input.nextSibling.innerHTML = input.value;
-	}
-	Array.from(document.querySelectorAll("[type=range]")).forEach(input => {
-		input.addEventListener("input", e => sync(e.target));
-		sync(input);
-	});
-
-	document.addEventListener("input", onChange);
-	DOM.autoRender.addEventListener("click", onChange);
+	document.addEventListener("change", e => render());
 }
 
 function init() {

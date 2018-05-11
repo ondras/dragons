@@ -1,0 +1,57 @@
+ @import url("https://fonts.googleapis.com/css?family=Nunito:400,600");
+
+* {
+	box-sizing: border-box;
+	font-family: nunito, sans-serif;
+}
+
+h1 {
+	text-align: center;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+}
+
+ul {
+	flex-grow: 2;
+	flex-basis: 0;
+}
+
+li + li {
+	margin-top: 0.4em;
+}
+
+#result {
+	flex-grow: 5;
+	flex-basis: 0;
+}
+
+#result canvas {
+	max-width: 100%;
+}
+
+fieldset {
+	float: left;
+	margin: 0;
+	width: 25%;
+}
+
+@media (max-width: 768px) {
+	fieldset {
+		width: 50%;
+	}
+}
+
+@media (max-width: 600px) {
+	main {
+		display: block;
+	}	
+}
+
+@media (max-width: 400px) {
+	fieldset {
+		width: 100%;
+	}
+}
