@@ -5,7 +5,7 @@ export const defaultOptions = {
 	generations: 15,
 	width: 800,
 	thickness: 0.02,
-	thicknessDecay: 0.75,
+	thicknessDecay: 0.7,
 	coloring: "reds",
 	shadowBlur: 0.75
 }
