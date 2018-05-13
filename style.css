@@ -26,6 +26,7 @@ li + li {
 #result {
 	flex-grow: 5;
 	flex-basis: 0;
+	text-align: center;
 }
 
 #result canvas {
